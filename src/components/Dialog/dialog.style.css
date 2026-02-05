@@ -1,0 +1,5 @@
+/** @format */
+
+::backdrop {
+  background-image: linear-gradient(45deg, magenta, green, red);
+}
