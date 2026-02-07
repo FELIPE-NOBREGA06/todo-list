@@ -80,8 +80,10 @@ function App() {
               return <ToDoItem key={t.id} item={t} />;
             })}
           </ToDoList>
-          <Dialog ispen={ShowDialog} />
           <Footer>
+            <Dialog isOpen={ShowDialog} onClose={toggleDialog}>
+              <p>This modal dialog has a groovy backdrop!</p>
+            </Dialog>
             <FabButton onClick={toggleDialog}>
               <IconPlus />
             </FabButton>
