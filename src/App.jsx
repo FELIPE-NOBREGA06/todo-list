@@ -10,7 +10,7 @@ import { IconPlus, IconSchool } from "./components/icons";
 import { SubHeading } from "./components/SubHeading";
 import { ToDoItem } from "./components/ToDoItem";
 import { ToDoList } from "./components/ToDoList";
-import { TextInput } from "./components/Textinput";
+import { TodoForm } from "./TodoForm";
 
 const todos = [
   {
@@ -60,6 +60,11 @@ function App() {
     setShowDialog(!ShowDialog);
   };
 
+  const addTudo = () => {
+    console.log("precisamos add um novo todo");
+    toggleDialog();
+  };
+
   return (
     <main>
       <Container>
@@ -83,9 +88,7 @@ function App() {
           </ToDoList>
           <Footer>
             <Dialog isOpen={ShowDialog} onClose={toggleDialog}>
-              <form>
-                <TextInput placeholder="Digite o item que deseja adicionar" />
-              </form>
+              <TodoForm onSubmit={addTudo} />
             </Dialog>
             <FabButton onClick={toggleDialog}>
               <IconPlus />
