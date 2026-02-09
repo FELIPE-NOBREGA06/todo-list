@@ -1,29 +1,19 @@
-import { useState } from "react";
-import { ChecklistsWrapper } from "./components/ChecklistsWrapper";
-import { Container } from "./components/Container";
-import { Dialog } from "./components/Dialog";
-import { FabButton } from "./components/FabButton";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { Heading } from "./components/Heading";
-import { IconPlus, IconSchool } from "./components/icons";
-import { TodoGroup } from "./components/TodoGroup";
-import { TodoForm } from "./components/TodoForm";
-import TodoContext from "./components/TodoProvider/TodoContext";
-import { use } from "react";
+import { use } from "react"
+import { ChecklistsWrapper } from "./components/ChecklistsWrapper"
+import { Container } from "./components/Container"
+import Dialog from "./components/Dialog"
+import { FabButton } from "./components/FabButton"
+import { Footer } from "./components/Footer"
+import { Header } from "./components/Header"
+import { Heading } from "./components/Heading"
+import { IconPlus, IconSchool } from "./components/icons"
+import FormToDo from "./components/FormToDo"
+import { TodoContext } from "./components/TodoProvider/TodoContext"
+import ToDoGroup from "./components/ToDoGroup"
 
 function App() {
-  const [showDialog, setShowDialog] = useState(false);
-  const { todos, addTodo } = use(TodoContext);
+  const { todos, upsertTodo, openTodoFormModal, closeTodoFormModal, isModalOpen } = use(TodoContext)
 
-  const toggleDialog = () => {
-    setShowDialog(!showDialog);
-  };
-
-  const handleFormSubmit = (formData) => {
-    addTodo(formData);
-    toggleDialog();
-  };
   return (
     <main>
       <Container>
@@ -33,28 +23,26 @@ function App() {
           </Heading>
         </Header>
         <ChecklistsWrapper>
-          <TodoGroup
+          <ToDoGroup
             heading="Para estudar"
-            items={todos.filter((t) => !t.completed)}
+            todos={todos.filter(t => !t.completed)}
           />
-
-          <TodoGroup
+          <ToDoGroup
             heading="Concluído"
-            items={todos.filter((t) => t.completed)}
+            todos={todos.filter(t => t.completed)}
           />
-
           <Footer>
-            <Dialog isOpen={showDialog} onClose={toggleDialog}>
-              <TodoForm onSubmit={handleFormSubmit} />
-            </Dialog>
-            <FabButton onClick={toggleDialog}>
+            <FabButton onClick={openTodoFormModal}>
               <IconPlus />
             </FabButton>
           </Footer>
         </ChecklistsWrapper>
       </Container>
+      <Dialog isOpen={isModalOpen} onClose={closeTodoFormModal}>
+        <FormToDo onSubmit={upsertTodo} />
+      </Dialog>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
