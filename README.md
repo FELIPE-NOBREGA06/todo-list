@@ -27,12 +27,14 @@ Uma aplicação web moderna para gerenciar seu plano de estudos de forma simples
 ## Instalação
 
 1. Clone o repositório:
+
 ```bash
 git clone <url-do-repositorio>
 cd checklist
 ```
 
 2. Instale as dependências:
+
 ```bash
 npm install
 ```
@@ -50,6 +52,7 @@ npm install
 ## Como Usar
 
 1. Inicie o servidor de desenvolvimento:
+
 ```bash
 npm run dev
 ```
@@ -101,20 +104,3 @@ A aplicação utiliza React Context API para gerenciar o estado global dos todos
 - `openTodoFormModal` - Abrir modal de formulário
 - `closeTodoFormModal` - Fechar modal de formulário
 - `selectTodoForEdit` - Selecionar todo para edição
-
-## Persistência de Dados
-
-Os dados são automaticamente salvos no localStorage do navegador. Isso significa que seus itens de estudo serão mantidos mesmo após fechar e reabrir a aplicação.
-
-## Desenvolvimento
-
-Para contribuir com o projeto:
-
-1. Crie uma branch para sua feature: `git checkout -b feature/minha-feature`
-2. Commit suas mudanças: `git commit -m 'Adiciona minha feature'`
-3. Push para a branch: `git push origin feature/minha-feature`
-4. Abra um Pull Request
-
-## Licença
-
-Este projeto está disponível sob a licença MIT.
